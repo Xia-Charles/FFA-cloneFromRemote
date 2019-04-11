@@ -6,7 +6,7 @@ from matplotlib.pylab import *
 def seg(X,P0):
     XW = FFA.XWrap2(X,P0,pow2=True)
     M   = XW.shape[0]  # number of rows
-    
+
     idCol = np.arange(P0,dtype=int)   # id of each column
     idRow = np.arange(M,dtype=int)   # id of each row
     P  = P0 + idRow.astype(float) / (M - 1)
@@ -22,7 +22,7 @@ def seg(X,P0):
     names = ['mean','count','s2n','P']
     dtype = zip(names,[float]*len(names) )
     rep   = np.empty(M,dtype=dtype)
-    
+
     # Take maximum epoch
     idColMa      = meanF.argmax(axis=1)
     rep['mean']  = meanF[idRow,idColMa]
@@ -40,6 +40,15 @@ X = X[:1000] # Modify this to change execution time.
 
 Pmin,Pmax = 250,2500
 PGrid = np.arange(Pmin,Pmax)
+
+''' Just learn git pull command line ,then should delete it ''' # from local
+Bin_offset = np.zeros(np.sum(Bins),dtype=np.int)
+Bin_sizes  = np.zeros(np.sum(Bins),dtype=np.int)
+T = np.zeros(np.sum(Bins),dtype=np.int)
+threshold = 10**(-10)
+noise_var = (k/Bins)*noise_flag
+offset = 1        # delete the whole paragraph
+
 
 func = lambda P0: seg(X,P0)
 rep = map(func,PGrid)
