@@ -31,7 +31,6 @@ def FFABench():
        rep['P']     = P
    
        return rep
-   
    X = np.load('pulse_train_data.npy')
    Xmask = np.load('pulse_train_mask.npy')
    X = ma.masked_array(X,Xmask,fill_value=0)
@@ -40,6 +39,15 @@ def FFABench():
    
    Pmin,Pmax = 250,2500
    PGrid = np.arange(Pmin,Pmax)
+   
+   ''' Just learn git pull command line, then should delete '''
+   for b in range(len(Bins)):
+        binInds = range(offset-1,offset+Bins[b])
+        T[binInds] = 4*N*noise_var[b] + threshold
+        Bin_sizes[binInds] = Bins[b]
+        Bin_offset[binInds] = offset-1
+        offset = offset + Bins[b]
+    offsets = np.ones(len(Bins),dtype=np.int)   ## delete this paragraph
    
    func = lambda P0: seg(X,P0)
    rep = map(func,PGrid)

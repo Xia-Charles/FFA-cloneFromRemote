@@ -27,11 +27,6 @@ def BLS_SNR(np.ndarray[DTYPE_t] t, np.ndarray[DTYPE_t] f,
 
     delT1 = int(nb * qmi)
     delT2 = int(nb * qma)
-                                                # For every bin count the 
-    cdef np.ndarray[DTYPE_t] ibi = np.empty(nb) # number of measurements
-    cdef np.ndarray[DTYPE_t] y   = np.empty(nb) # sum of measurements
-    cdef np.ndarray[DTYPE_t] yy  = np.empty(nb) # sum of measurements squared
-    cdef np.ndarray[DTYPE_t] u = t - t[0]
 
     cdef int iP,ib,i,i1,i2,j # counters
 
