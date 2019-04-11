@@ -17,3 +17,5 @@ class TestClass:
        inputArr = np.load(input)
        for i in range(100):
            FFA.FFA(inputArr)
+
+a = b + 2
