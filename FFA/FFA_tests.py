@@ -19,3 +19,4 @@ class TestClass:
            FFA.FFA(inputArr)
 
 a = b + 2
+b = c + 3
