@@ -48,6 +48,23 @@ def FFABench():
         Bin_offset[binInds] = offset-1
         offset = offset + Bins[b]
     offsets = np.ones(len(Bins),dtype=np.int)
+
+
+
+      @cython.boundscheck(False)
+@cython.wraparound(False)
+def cmaxDelTt0( cnp.ndarray[double, ndim=2,mode='c'] XsumP,
+                cnp.ndarray[double, ndim=2,mode='c'] XXsumP,
+                cnp.ndarray[double, ndim=2,mode='c'] XcntP,
+                int P,
+                cnp.ndarray[int, ndim=1,mode='c'] DelTarr,
+                int nDelT):
+
+
+    cdef int M = XsumP.shape[0]
+    cdef int j ## delete this paragraph
+
+    offsets = np.ones(len(Bins),dtype=np.int)
                                   ## delete this paragraph
 
    func = lambda P0: seg(X,P0)
