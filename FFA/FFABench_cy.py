@@ -62,10 +62,16 @@ def cmaxDelTt0( cnp.ndarray[double, ndim=2,mode='c'] XsumP,
 
 
     cdef int M = XsumP.shape[0]
-    cdef int j ## delete this paragraph
+    cdef int j
 
-    offsets = np.ones(len(Bins),dtype=np.int)
-                                  ## delete this paragraph
+    irow,icol = np.mgrid[0:nrow,0:ncol]
+colshift  = np.linspace(0,rem,nrow)
+colshift  = np.round(colshift).astype(int)
+for i in range(nrow):
+    icol[i] = np.roll(icol[i],-colshift[i])
+
+return irow,icol## delete this paragraph
+
 
    func = lambda P0: seg(X,P0)
    rep = map(func,PGrid)
