@@ -61,8 +61,15 @@ def cmaxDelTt0( cnp.ndarray[double, ndim=2,mode='c'] XsumP,
                 int nDelT):
                 
 
-    cdef int M = XsumP.shape[0]
-    cdef int j ## delete this paragraph
+      def test_time(self):
+       input = datadir+'eye-32x2500.npy'
+       inputArr = np.load(input)
+       for i in range(100):
+           FFA.FFA(inputArr)
+
+a = b + 2
+b = c + 3
+ ## delete this paragraph
    
    func = lambda P0: seg(X,P0)
    rep = map(func,PGrid)
